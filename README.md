@@ -16,37 +16,37 @@ import DatePicker from 'react-native-daterange';
 
 //range picker
 <DatePicker
-	style={ { width: 350, height: 45 } }
-	customStyles = { {
-		placeholderText:{ fontSize:20 } // placeHolder style
-		headerStyle : {  },			// title container style
-		headerMarkTitle : { }, // title mark style
-		headerDateTitle: { }, // title Date style
-		contentInput: {}, //content text container style
-		contentText: {}, //after selected text Style
-	} } // optional
-	centerAlign // optional text will align center or not
-	allowFontScaling = {false} // optional
-	placeholder={'Apr 27, 2018 → Jul 10, 2018'}
-	mode={'range'}
+  style={{ width: 350, height: 45 }}
+  customStyles={{
+    placeholderText:{ fontSize:20 } // placeHolder style
+    headerStyle: {},			// title container style
+    headerMarkTitle : {}, // title mark style
+    headerDateTitle: {}, // title Date style
+    contentInput: {}, //content text container style
+    contentText: {}, //after selected text Style
+  }} // optional
+  centerAlign // optional text will align center or not
+  allowFontScaling={false} // optional
+  placeholder={'Apr 27, 2018 → Jul 10, 2018'}
+  mode={'range'}
 />
 
 //single picker
 <DatePicker
-	style={ { width: 350, height: 45 } }
-	customStyles = { {
-		placeholderText:{ fontSize:20 }, // placeHolder style
-		headerStyle : {  },			// title container style
-		headerMarkTitle : { }, // title mark style
-		headerDateTitle: { }, // title Date style
-		contentInput: {}, //content text container style
-		contentText: {}, //after selected text Style
-	} } // optional
-	centerAlign // optional text will align center or not
-	allowFontScaling = {false} // optional
-	placeholder={'Apr 27, 2018'}
-	selectedBgColor="black"
-	selectedTextColor="blue"
+  style={{ width: 350, height: 45 }}
+  customStyles={{
+    placeholderText:{ fontSize:20 }, // placeHolder style
+    headerStyle : {},			// title container style
+    headerMarkTitle : {}, // title mark style
+    headerDateTitle: {}, // title Date style
+    contentInput: {}, //content text container style
+    contentText: {}, //after selected text Style
+  }} // optional
+  centerAlign // optional text will align center or not
+  allowFontScaling = {false} // optional
+  placeholder={'Apr 27, 2018'}
+  selectedBgColor="black"
+  selectedTextColor="blue"
 />
 
 
@@ -60,7 +60,7 @@ export default class NewPicker extends React.Component{
     const {
       ...rest
     } = this.props;
-    const customButton = (<Button onPress={this.customButtonOnPress} style={{ container:{ width:'80%', marginHorizontal:'3%' }, text:{ fontSize: 20 } }} primary text={'送出'}/>);
+    const customButton = (<Button onPress={this.customButtonOnPress} style={{ container:{ width:'80%', marginHorizontal:'3%' }, text:{ fontSize: 20 } }} primary text={'Set'}/>);
     return(
       <DatePicker
         ref = {(ref)=> this.picker = ref}
@@ -91,7 +91,7 @@ export default class NewPicker extends React.Component{
 | **`mode`**              | `String`    | one of ['range', 'single'] , default as single                                                                                         |
 | **`customButton`**      | `component` | Optional (total custom your button component)e.g.(`<Button></Button>`)                                                                 |
 | **`blockBefore`**       | `Bool`      | optional. default is false, decide blocke date before today or not                                                                     |
-| **`markText`**          | `String`    | optional. default is "選擇日期", you can custom this prop to label text with ur own                                                    |
+| **`markText`**          | `String`    | optional. default is "Select Date", you can custom this prop to label text with ur own                                                 |
 | **`buttonText`**        | `String`    | optional. you can modify default button't label with your own                                                                          |
 | **`blockAfter`**        | `Bool`      | optional. default is false, decide blocke date after today or not                                                                      |
 

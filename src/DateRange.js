@@ -121,7 +121,7 @@ export default class DateRange extends Component {
   }
   render() {
     
-    const markText = this.props.markText || "選擇日期";
+    const markText = this.props.markText || "Select Date";
     const {
       customStyles = {},
     } = this.props;
