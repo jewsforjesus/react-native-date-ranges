@@ -1,7 +1,6 @@
-
 {
-  "name": "react-native-date-ranges",
-  "version": "2.3.1",
+  "name": "react-native-daterange",
+  "version": "2.3.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +10,7 @@
     "react-native",
     "dates",
     "date ranges",
+    "date range",
     "single datepicker",
     "range datepicker",
     "react-native-dates",
@@ -18,11 +18,11 @@
     "datepickers",
     "rn-dates"
   ],
-  "author": "louis",
+  "author": "Jews for Jesus",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pohsiu/react-native-date-ranges"
+    "url": "https://github.com/jewsforjesus/react-native-daterange"
   },
   "dependencies": {
     "react": ">=16.0.0-alpha.12",
