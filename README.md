@@ -7,7 +7,7 @@
 
 `$ npm install react-native-daterange --save`
 
-![alt text](https://raw.githubusercontent.com/pohsiu/react-native-daterange/master/ezgif.com-video-to-gif.gif)
+![alt text](https://raw.githubusercontent.com/jewsforjesus/react-native-daterange/master/ezgif.com-video-to-gif.gif)
 
 ## Usage
 
