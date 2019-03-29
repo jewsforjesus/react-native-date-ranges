@@ -154,6 +154,8 @@ export default class ComposePicker extends Component {
                   isDateBlocked={this.isDateBlocked}
                   startDate={this.state.startDate}
                   endDate={this.state.endDate}
+                  startDateText={this.props.startDateText}
+                  endDateText={this.props.endDateText}
                   focusedInput={this.state.focus}
                   selectedBgColor={this.props.selectedBgColor || undefined}
                   selectedTextColor={this.props.selectedTextColor || undefined}
@@ -163,7 +165,6 @@ export default class ComposePicker extends Component {
               </View>
               <View
                 style={{
-                  paddingBottom: "5%",
                   width: "100%",
                   height: "10%",
                   flexDirection: "row",
