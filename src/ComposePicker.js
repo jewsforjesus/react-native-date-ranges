@@ -7,7 +7,7 @@ import normalize from "./normalizeText";
 const styles = {
   placeholderText: {
     color: "#c9c9c9",
-    fontSize: normalize(18)
+    fontSize: normalize(20)
   },
   contentInput: {
     alignItems: "center",
@@ -17,10 +17,10 @@ const styles = {
     fontSize: normalize(18)
   },
   stylish: {
-    height: 48,
+    height: 40,
     borderColor: "#bdbdbd",
     borderWidth: 2,
-    borderRadius: 32
+    borderRadius: 8
   }
 };
 export default class ComposePicker extends Component {
