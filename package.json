@@ -25,10 +25,10 @@
     "url": "https://github.com/jewsforjesus/react-native-daterange"
   },
   "dependencies": {
-    "react": ">=16.0.0-alpha.12",
-    "moment": "^2.22.1",
+    "react": ">=16.8.3",
+    "moment": "^2.24.0",
     "moment-range": "2.2.0",
-    "prop-types": "^15.6.1"
+    "prop-types": "^15.7.2"
   },
   "peerDependencies": {
     "react-native": ">=0.41.2"
