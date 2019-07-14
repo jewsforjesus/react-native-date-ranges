@@ -63,4 +63,4 @@ const normalize = (size) => {
   return size;
 };
 
-module.exports = normalize; // eslint-disable-line no-undef
+export default normalize; // eslint-disable-line no-undef
