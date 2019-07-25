@@ -1,4 +1,5 @@
 import moment from 'moment';
+import 'moment-range';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
