@@ -41,13 +41,13 @@ export default class Month extends Component {
     const startOfMonth = focusedMonth
       .clone()
       .startOf('month')
-      .startOf('isoweek'); // make startOfMonth is immutable
+      .startOf('week'); // make startOfMonth is immutable
     const endOfMonth = focusedMonth.clone().endOf('month'); // same logic as below
 
     // get the interval of week of first day and last day
     const weekRange = moment.range(
-      currentDate.clone().startOf('isoweek'),
-      currentDate.clone().endOf('isoweek'),
+      currentDate.clone().startOf('week'),
+      currentDate.clone().endOf('week'),
     );
     weekRange.by('days', day => {
       dayNames.push(
