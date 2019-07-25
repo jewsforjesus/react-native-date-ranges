@@ -1,42 +1,42 @@
-import React, { Component } from "react";
-import { Text, View, TouchableOpacity, Picker } from "react-native";
-import PropTypes from "prop-types";
-import moment from "moment";
-import normalize from "./normalizeText";
-import Month from "./Month";
+import React, { Component } from 'react';
+import { Text, View, TouchableOpacity, Picker } from 'react-native';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import normalize from './normalizeText';
+import Month from './Month';
 
 const styles = {
   calendar: {
-    backgroundColor: "rgb(255, 255, 255)",
-    marginHorizontal: normalize(10)
+    backgroundColor: 'rgb(255, 255, 255)',
+    marginHorizontal: normalize(10),
   },
   headActionContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
   },
   headCoverContainer: {
     paddingTop: 20,
     paddingBottom: 20,
     height: normalize(120),
-    width: "100%",
-    justifyContent: "center",
-    backgroundColor: "#5F9FE2",
-    paddingHorizontal: 20
+    width: '100%',
+    justifyContent: 'center',
+    backgroundColor: '#5F9FE2',
+    paddingHorizontal: 20,
   },
   dateContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   headTitleText: {
     fontSize: normalize(20),
-    color: "white",
-    fontWeight: "bold"
-  }
+    color: 'white',
+    fontWeight: 'bold',
+  },
 };
 
 const min = 1900;
@@ -48,36 +48,36 @@ export default class DateRange extends Component {
   constructor(props) {
     super(props);
     const defalutFormat =
-      !props.mode || props.mode === "single" ? "ddd, MMM D" : "MMM DD,YYYY";
+      !props.mode || props.mode === 'single' ? 'ddd, MMM D' : 'MMM DD,YYYY';
     this.state = {
-      focusedMonth: moment().startOf("month"),
+      focusedMonth: moment().startOf('month'),
       currentDate: props.currentDate || moment(),
-      startDate: props.startDate || "",
-      endDate: props.endDate || "",
-      focus: props.focusedInput || "startDate",
-      clearStart: "",
-      clearEnd: "",
-      clearSingle: props.currentDate.format(defalutFormat) || "",
-      selectState: "monthAndDate", // or year
-      selectedYear: null
+      startDate: props.startDate || '',
+      endDate: props.endDate || '',
+      focus: props.focusedInput || 'startDate',
+      clearStart: '',
+      clearEnd: '',
+      clearSingle: props.currentDate.format(defalutFormat) || '',
+      selectState: 'monthAndDate', // or year
+      selectedYear: null,
     };
   }
   previousMonth = () => {
     this.setState({
-      focusedMonth: this.state.focusedMonth.add(-1, "M")
+      focusedMonth: this.state.focusedMonth.add(-1, 'M'),
     });
   };
   nextMonth = () => {
     this.setState({
-      focusedMonth: this.state.focusedMonth.add(1, "M")
+      focusedMonth: this.state.focusedMonth.add(1, 'M'),
     });
   };
   onDatesChange = event => {
     this.props.onDatesChange(event);
     const defalutFormat =
-      !this.props.mode || this.props.mode === "single"
-        ? "ddd, MMM D"
-        : "MMM DD,YYYY";
+      !this.props.mode || this.props.mode === 'single'
+        ? 'ddd, MMM D'
+        : 'MMM DD,YYYY';
     const headFormat = this.props.headFormat || defalutFormat;
     const { startDate, endDate, focusedInput, currentDate } = event;
     if (currentDate) {
@@ -90,99 +90,99 @@ export default class DateRange extends Component {
       if (endDate) {
         this.setState({
           clearStart: startDate.format(headFormat),
-          clearEnd: endDate.format(headFormat)
+          clearEnd: endDate.format(headFormat),
         });
       } else {
         this.setState({
           clearStart: startDate.format(headFormat),
-          clearEnd: ""
+          clearEnd: '',
         });
       }
     });
   };
   selectYear = () => {
     this.setState({
-      selectState: "year",
-      selectedYear: parseInt(this.state.focusedMonth.format("YYYY"))
+      selectState: 'year',
+      selectedYear: parseInt(this.state.focusedMonth.format('YYYY')),
     });
   };
   selectMonthAndDate = () => {
     this.setState({
-      selectState: "monthAndDate"
+      selectState: 'monthAndDate',
     });
   };
   changeYear = itemValue => {
     this.setState({ selectedYear: itemValue });
     this.setState({
       focusedMonth: this.state.focusedMonth.year(itemValue),
-      currentDate: this.state.currentDate.year(itemValue)
+      currentDate: this.state.currentDate.year(itemValue),
     });
     const defalutFormat =
-      !this.props.mode || this.props.mode === "single"
-        ? "ddd, MMM D"
-        : "MMM DD,YYYY";
+      !this.props.mode || this.props.mode === 'single'
+        ? 'ddd, MMM D'
+        : 'MMM DD,YYYY';
     const headFormat = this.props.headFormat || defalutFormat;
     this.setState({ clearSingle: this.state.currentDate.format(headFormat) });
   };
   render() {
-    const markText = this.props.markText || "Select Date";
+    const markText = this.props.markText || 'Select Date';
     const { customStyles = {} } = this.props;
 
     const headerContainer = {
       ...styles.headCoverContainer,
-      ...customStyles.headerStyle
+      ...customStyles.headerStyle,
     };
     const markTitle = {
       ...styles.headTitleText,
-      color: "white",
+      color: 'white',
       opacity: 0.8,
       marginBottom: 15,
       fontSize: normalize(18),
-      ...customStyles.headerMarkTitle
+      ...customStyles.headerMarkTitle,
     };
     const headerDate = {
       ...styles.headTitleText,
-      ...customStyles.headerDateTitle
+      ...customStyles.headerDateTitle,
     };
     return (
       <View>
         <View style={headerContainer}>
-          {this.props.mode === "single" && (
+          {this.props.mode === 'single' && (
             <View>
               <TouchableOpacity onPress={this.selectYear}>
                 <Text style={markTitle}>
-                  {this.state.focusedMonth.format("YYYY")}
+                  {this.state.focusedMonth.format('YYYY')}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={this.selectMonthAndDate}>
                 <Text
-                  style={{ fontSize: 40, color: "white", fontWeight: "bold" }}
+                  style={{ fontSize: 40, color: 'white', fontWeight: 'bold' }}
                 >
                   {this.state.clearSingle}
                 </Text>
               </TouchableOpacity>
             </View>
           )}
-          {this.props.mode === "range" && (
+          {this.props.mode === 'range' && (
             <View>
               <Text style={markTitle}>{markText}</Text>
               <View style={styles.dateContainer}>
                 <Text style={headerDate}>
                   {this.state.clearStart
                     ? this.state.clearStart
-                    : this.props.startDateText || "Start Date"}
+                    : this.props.startDateText || 'Start Date'}
                 </Text>
                 <Text style={styles.headTitleText}>→</Text>
                 <Text style={headerDate}>
                   {this.state.clearEnd
                     ? this.state.clearEnd
-                    : this.props.endDateText || "End Date"}
+                    : this.props.endDateText || 'End Date'}
                 </Text>
               </View>
             </View>
           )}
         </View>
-        {this.state.selectState === "monthAndDate" && (
+        {this.state.selectState === 'monthAndDate' && (
           <View style={styles.calendar}>
             <View style={styles.headActionContainer}>
               <TouchableOpacity onPress={this.previousMonth}>
@@ -190,26 +190,26 @@ export default class DateRange extends Component {
                   style={{
                     paddingHorizontal: 15,
                     fontSize: 18,
-                    fontWeight: "bold"
+                    fontWeight: 'bold',
                   }}
                 >
-                  {"<"}
+                  {'<'}
                 </Text>
               </TouchableOpacity>
               <Text
-                style={{ fontSize: 20, color: "black", fontWeight: "bold" }}
+                style={{ fontSize: 20, color: 'black', fontWeight: 'bold' }}
               >
-                {this.state.focusedMonth.format("MMMM YYYY")}
+                {this.state.focusedMonth.format('MMMM YYYY')}
               </Text>
               <TouchableOpacity onPress={this.nextMonth}>
                 <Text
                   style={{
                     paddingHorizontal: 15,
                     fontSize: 18,
-                    fontWeight: "bold"
+                    fontWeight: 'bold',
                   }}
                 >
-                  {">"}
+                  {'>'}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -229,11 +229,11 @@ export default class DateRange extends Component {
             />
           </View>
         )}
-        {this.state.selectState === "year" && (
+        {this.state.selectState === 'year' && (
           <View
             style={[
               styles.calendar,
-              { height: "75%", justifyContent: "center" }
+              { height: '75%', justifyContent: 'center' },
             ]}
           >
             <Picker
@@ -258,14 +258,14 @@ export default class DateRange extends Component {
 }
 
 DateRange.propTypes = {
-  mode: PropTypes.oneOf(["range", "single"]),
+  mode: PropTypes.oneOf(['range', 'single']),
   date: PropTypes.instanceOf(moment),
   startDate: PropTypes.instanceOf(moment),
   endDate: PropTypes.instanceOf(moment),
   startDateText: PropTypes.string,
   endDateText: PropTypes.string,
-  focusedInput: PropTypes.oneOf(["startDate", "endDate"]),
+  focusedInput: PropTypes.oneOf(['startDate', 'endDate']),
   onDatesChange: PropTypes.func,
   isDateBlocked: PropTypes.func,
-  onDisableClicked: PropTypes.func
+  onDisableClicked: PropTypes.func,
 };

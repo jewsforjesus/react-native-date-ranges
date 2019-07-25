@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import { View, TouchableHighlight, Modal, Text } from "react-native";
-import DateRange from "./DateRange";
-import moment from "moment";
-import normalize from "./normalizeText";
+import React, { Component } from 'react';
+import { View, TouchableHighlight, Modal, Text } from 'react-native';
+import DateRange from './DateRange';
+import moment from 'moment';
+import normalize from './normalizeText';
 
 const styles = {
   placeholderText: {
-    color: "#c9c9c9",
-    fontSize: normalize(20)
+    color: '#c9c9c9',
+    fontSize: normalize(20),
   },
   contentInput: {
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   contentText: {
-    fontSize: normalize(18)
+    fontSize: normalize(18),
   },
   stylish: {
     height: 40,
-    borderColor: "#bdbdbd",
+    borderColor: '#bdbdbd',
     borderWidth: 2,
-    borderRadius: 8
-  }
+    borderRadius: 8,
+  },
 };
 export default class ComposePicker extends Component {
   constructor(props) {
@@ -30,19 +30,19 @@ export default class ComposePicker extends Component {
       modalVisible: false,
       allowPointerEvents: true,
       showContent: false,
-      selected: "",
+      selected: '',
       startDate: null,
       endDate: null,
       date: new Date(),
-      focus: "startDate",
-      currentDate: moment()
+      focus: 'startDate',
+      currentDate: moment(),
     };
   }
   isDateBlocked = date => {
     if (this.props.blockBefore) {
-      return date.isBefore(moment(), "day");
+      return date.isBefore(moment(), 'day');
     } else if (this.props.blockAfter) {
-      return date.isAfter(moment(), "day");
+      return date.isAfter(moment(), 'day');
     }
     return false;
   };
@@ -60,17 +60,17 @@ export default class ComposePicker extends Component {
     this.setState({ modalVisible: visible });
   };
   onConfirm = () => {
-    const returnFormat = this.props.returnFormat || "YYYY/MM/DD";
-    const outFormat = this.props.outFormat || "LL";
-    if (!this.props.mode || this.props.mode === "single") {
+    const returnFormat = this.props.returnFormat || 'YYYY/MM/DD';
+    const outFormat = this.props.outFormat || 'LL';
+    if (!this.props.mode || this.props.mode === 'single') {
       this.setState({
         showContent: true,
-        selected: this.state.currentDate.format(outFormat)
+        selected: this.state.currentDate.format(outFormat),
       });
       this.setModalVisible(false);
-      if (typeof this.props.onConfirm === "function") {
+      if (typeof this.props.onConfirm === 'function') {
         this.props.onConfirm({
-          currentDate: this.state.currentDate.format(returnFormat)
+          currentDate: this.state.currentDate.format(returnFormat),
         });
       }
       return;
@@ -82,19 +82,19 @@ export default class ComposePicker extends Component {
       this.setState({ showContent: true, selected: `${start} → ${end}` });
       this.setModalVisible(false);
 
-      if (typeof this.props.onConfirm === "function") {
+      if (typeof this.props.onConfirm === 'function') {
         this.props.onConfirm({
           startDate: this.state.startDate.format(returnFormat),
-          endDate: this.state.endDate.format(returnFormat)
+          endDate: this.state.endDate.format(returnFormat),
         });
       }
     } else {
-      alert("please select correct date");
+      alert('please select correct date');
     }
   };
   getTitleElement() {
     const { placeholder, customStyles = {}, allowFontScaling } = this.props;
-    const showContent = this.state.showContent;
+    const { showContent } = this.state;
     if (!showContent && placeholder) {
       return (
         <Text
@@ -123,13 +123,13 @@ export default class ComposePicker extends Component {
 
     return (
       <TouchableHighlight
-        underlayColor={"transparent"}
+        underlayColor={'transparent'}
         onPress={() => {
           this.setModalVisible(true);
         }}
         style={[
-          { width: "100%", height: "100%", justifyContent: "center" },
-          style
+          { width: '100%', height: '100%', justifyContent: 'center' },
+          style,
         ]}
       >
         <View>
@@ -144,8 +144,8 @@ export default class ComposePicker extends Component {
             visible={this.state.modalVisible}
             onRequestClose={() => this.setModalVisible(false)}
           >
-            <View stlye={{ flex: 1, flexDirection: "column" }}>
-              <View style={{ height: "90%" }}>
+            <View stlye={{ flex: 1, flexDirection: 'column' }}>
+              <View style={{ height: '90%' }}>
                 <DateRange
                   headFormat={this.props.headFormat}
                   customStyles={customStyles}
@@ -159,28 +159,28 @@ export default class ComposePicker extends Component {
                   focusedInput={this.state.focus}
                   selectedBgColor={this.props.selectedBgColor || undefined}
                   selectedTextColor={this.props.selectedTextColor || undefined}
-                  mode={this.props.mode || "single"}
+                  mode={this.props.mode || 'single'}
                   currentDate={this.state.currentDate}
                 />
               </View>
               <View
                 style={{
-                  width: "100%",
-                  height: "10%",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center"
+                  width: '100%',
+                  height: '10%',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
               >
                 {this.props.customButton ? (
                   this.props.customButton
                 ) : (
                   <TouchableHighlight
-                    underlayColor={"transparent"}
+                    underlayColor={'transparent'}
                     onPress={this.onConfirm}
                     style={[
-                      { width: "80%", marginHorizontal: "3%" },
-                      this.props.ButtonStyle
+                      { width: '80%', marginHorizontal: '3%' },
+                      this.props.ButtonStyle,
                     ]}
                   >
                     <Text
@@ -188,7 +188,7 @@ export default class ComposePicker extends Component {
                     >
                       {this.props.ButtonText
                         ? this.props.ButtonText
-                        : "Set Date"}
+                        : 'Set Date'}
                     </Text>
                   </TouchableHighlight>
                 )}
